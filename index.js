@@ -25,6 +25,6 @@ app.post('/log', (req, res) => {
 })
 
 http.createServer(app)
-  .listen(6000, () => {
-    console.log("HTTP Server listening on port 5443")
+  .listen(6443, () => {
+    console.log("HTTP Server listening on port 6443")
   })
