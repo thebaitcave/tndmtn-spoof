@@ -32,7 +32,7 @@ app.post('/log', (req, res) => {
     IP: requestIp.getClientIp(req),
     ...req.body
   }) + "\n"
-  fs.appendFile('./log.txt', str, console.log)
+  fs.appendFile('./log.txt', str, () => console.log(str))
   res.send({status: 200})
 })
 
